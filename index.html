@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мультистраничное приложение</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/pages/home.css">
+    <script type="module" src="./js/main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Добро пожаловать в мультистраничное приложение</h1>
+            <p>Выберите один из разделов ниже</p>
+        </header>
+        
+        <main class="main-content">
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🌤️</div>
+                    <h2 class="card-title">Погода</h2>
+                    <p class="card-description">Текущая погода и прогноз</p>
+                    <a href="weather.html" class="card-link">Перейти</a>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">💱</div>
+                    <h2 class="card-title">Конвертер валют</h2>
+                    <p class="card-description">Актуальные курсы валют</p>
+                    <a href="currency.html" class="card-link">Перейти</a>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">📅</div>
+                    <h2 class="card-title">Выходной день?</h2>
+                    <p class="card-description">Проверка, выходной ли день в РФ</p>
+                    <a href="holiday.html" class="card-link">Перейти</a>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">❓</div>
+                    <h2 class="card-title">Загадка</h2>
+                    <p class="card-description">Что-то интересное...</p>
+                    <a href="mystery.html" class="card-link">Перейти</a>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>&copy; 2025</p>
+        </footer>
+    </div>
+</body>
+</html>
