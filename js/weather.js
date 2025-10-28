@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const weatherResult = document.getElementById('weather-result');
     const errorMessage = document.getElementById('error-message');
     
-    // Элементы для отображения данных
     const cityName = document.getElementById('city-name');
     const locationDetails = document.getElementById('location-details');
     const temperature = document.getElementById('temperature');
@@ -16,11 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const humidity = document.getElementById('humidity');
     const windSpeed = document.getElementById('wind-speed');
     const pressure = document.getElementById('pressure');
-    
-    // Кнопки популярных городов
     const cityButtons = document.querySelectorAll('.city-btn');
 
-    // Функция для показа/скрытия loading
     function setLoading(isLoading) {
         if (isLoading) {
             searchBtn.disabled = true;
@@ -42,11 +38,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Функция для получения координат города
     async function getCityCoordinates(cityName) {
         const geocodingUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityName)}&count=1&language=ru&format=json`;
-        
         try {
             const response = await fetch(geocodingUrl);
             const data = await response.json();
-            
             if (data.results && data.results.length > 0) {
                 const city = data.results[0];
                 return {
@@ -67,8 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Функция для получения данных о погоде
     async function getWeatherData(latitude, longitude) {
-        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,relativehumidity_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=1`;
-        
+		const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,wind_direction_10m&temperature_unit=celsius&wind_speed_unit=kmh&timezone=auto&forecast_days=1`;;
         try {
             const response = await fetch(weatherUrl);
             const data = await response.json();
@@ -107,20 +100,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Функция для отображения данных о погоде
     function displayWeather(cityInfo, weatherData) {
         const currentWeather = weatherData.current_weather;
+		const currentHour = new Date().getHours();
         const weatherInfo = getWeatherInfo(currentWeather.weathercode);
-        
-        // Обновляем элементы DOM
         cityName.textContent = cityInfo.name;
         locationDetails.textContent = `${cityInfo.admin1 ? cityInfo.admin1 + ', ' : ''}${cityInfo.country}`;
         temperature.textContent = `${Math.round(currentWeather.temperature)}°C`;
         weatherIcon.textContent = weatherInfo.icon;
         weatherDescription.textContent = weatherInfo.description;
-        feelsLike.textContent = `${Math.round(currentWeather.temperature)}°C`; // В этом API нет feels_like
-        humidity.textContent = `${weatherData.hourly?.relativehumidity_2m?.[0] || 'N/A'}%`;
+        feelsLike.textContent = `${Math.round(weatherData.hourly.apparent_temperature[currentHour])}°C`;
+        humidity.textContent = `${weatherData.hourly.relative_humidity_2m[currentHour] || 'N/A'}%`;
         windSpeed.textContent = `${Math.round(currentWeather.windspeed)} км/ч`;
-        pressure.textContent = '1013 hPa'; // В этом API нет давления в бесплатной версии
-        
-        // Показываем результат
         hideAllMessages();
         weatherResult.classList.remove('hidden');
     }
@@ -129,17 +118,10 @@ document.addEventListener('DOMContentLoaded', function() {
     async function fetchWeather(city) {
         hideAllMessages();
         setLoading(true);
-        
         try {
-            // Получаем координаты города
             const cityInfo = await getCityCoordinates(city);
-            
-            // Получаем данные о погоде
             const weatherData = await getWeatherData(cityInfo.latitude, cityInfo.longitude);
-            
-            // Отображаем данные
             displayWeather(cityInfo, weatherData);
-            
         } catch (error) {
             console.error('Ошибка:', error);
             hideAllMessages();
@@ -153,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
     weatherForm.addEventListener('submit', function(e) {
         e.preventDefault();
         const city = cityInput.value.trim();
-        
         if (city) {
             fetchWeather(city);
         }
@@ -167,9 +148,5 @@ document.addEventListener('DOMContentLoaded', function() {
             fetchWeather(city);
         });
     });
-
-    // Фокусируемся на поле ввода при загрузке страницы
     cityInput.focus();
-
-    console.log('Страница погоды загружена');
 });
