@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Roboto+Slab&display=swap');
+
+body {
+    font-family: 'Roboto Slab', serif;
+    background-color: #fdf8f2;
+    background-image: url('https://www.toptal.com/designers/subtlepatterns/uploads/paper_fibers.png');
+    background-size: 400px 400px;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    color: #2c1a0d;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    animation: fadeIn 1s ease;
+}
+
+.container {
+    max-width: 950px;
+    margin: 50px auto;
+    padding: 40px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+    border: 3px solid #bfa14a;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.85);
+    position: relative;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1.5px dashed rgba(191, 161, 74, 0.7);
+    border-radius: 15px;
+    pointer-events: none;
+}
+
+.header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    text-align: center;
+    color: #6b2e1a;
+    position: relative;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    animation: glow 3s infinite ease-in-out;
+}
+
+.header h1::before {
+    content: "✝";
+    display: block;
+    font-size: 2rem;
+    color: #bfa14a;
+    margin-bottom: 8px;
+}
+
+nav {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.nav-link {
+    color: #6b2e1a;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    margin: 0 15px;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.nav-link:hover {
+    border-bottom: 2px solid #bfa14a;
+}
+
+.main-content {
+    text-align: center;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.calendar-controls {
+    margin-bottom: 35px;
+}
+
+label {
+    font-weight: bold;
+    color: #6b2e1a;
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+input[type="date"] {
+    padding: 10px;
+    border: 2px solid #bfa14a;
+    border-radius: 6px;
+    background-color: #fffef7;
+    color: #2c1a0d;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #bfa14a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #a08535;
+    transform: translateY(-1px);
+}
+
+.calendar-info {
+    border-top: 2px solid #bfa14a;
+    padding-top: 30px;
+    position: relative;
+    font-size: 1.05rem;
+    animation: fadeIn 1s ease;
+}
+
+.calendar-info::before,
+.calendar-info::after {
+    content: "🕯";
+    font-size: 2rem;
+    position: absolute;
+    bottom: -15px;
+    animation: flicker 2s infinite;
+}
+
+.calendar-info::before {
+    left: 30px;
+}
+
+.calendar-info::after {
+    right: 30px;
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+@keyframes glow {
+    0%, 100% { text-shadow: 0 0 8px #bfa14a80; }
+    50% { text-shadow: 0 0 16px #bfa14aaa; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #6b2e1a;
+    font-size: 1rem;
+    border-top: 1px solid #bfa14a;
+    padding-top: 15px;
+}
