@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Церковный Календарь</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/pages/church-calendar.css">
+    <script type="module" src="../js/church-calendar.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Церковный Календарь</h1>
+            <nav>
+                <a href="../../index.html" class="nav-link">На главную</a>
+            </nav>
+        </header>
+        <main class="main-content">
+            <div class="calendar-controls">
+                <label for="date-input">Выберите дату:</label>
+                <input type="date" id="date-input" value="">
+                <button id="fetch-btn">Получить информацию</button>
+            </div>
+            <div id="calendar-info" class="calendar-info">
+            </div>
+        </main>
+        <footer class="footer">
+            <p>Данные предоставлены <a href="http://calapi.inadiutorium.cz" target="_blank">calapi.inadiutorium.cz</a></p>
+        </footer>
+    </div>
+</body>
+</html>
