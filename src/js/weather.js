@@ -28,14 +28,10 @@ document.addEventListener('DOMContentLoaded', function() {
             searchBtn.querySelector('span').style.visibility = 'visible';
         }
     }
-
-    // Функция для скрытия всех сообщений
     function hideAllMessages() {
         weatherResult.classList.add('hidden');
         errorMessage.classList.add('hidden');
     }
-
-    // Функция для получения координат города
     async function getCityCoordinates(cityName) {
         const geocodingUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityName)}&count=1&language=ru&format=json`;
         try {
@@ -58,8 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
             throw error;
         }
     }
-
-    // Функция для получения данных о погоде
     async function getWeatherData(latitude, longitude) {
 		const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,wind_direction_10m&temperature_unit=celsius&wind_speed_unit=kmh&timezone=auto&forecast_days=1`;;
         try {
@@ -71,8 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
             throw error;
         }
     }
-
-    // Функция для преобразования кода погоды в описание и иконку
     function getWeatherInfo(weatherCode) {
         const weatherCodes = {
             0: { description: 'Ясно', icon: '☀️' },
@@ -93,11 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
             95: { description: 'Гроза', icon: '⛈️' },
             96: { description: 'Гроза с градом', icon: '⛈️' }
         };
-        
         return weatherCodes[weatherCode] || { description: 'Неизвестно', icon: '❓' };
     }
-
-    // Функция для отображения данных о погоде
     function displayWeather(cityInfo, weatherData) {
         const currentWeather = weatherData.current_weather;
 		const currentHour = new Date().getHours();
@@ -113,8 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
         hideAllMessages();
         weatherResult.classList.remove('hidden');
     }
-
-    // Основная функция для получения и отображения погоды
     async function fetchWeather(city) {
         hideAllMessages();
         setLoading(true);
@@ -130,8 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
             setLoading(false);
         }
     }
-
-    // Обработчик отправки формы
     weatherForm.addEventListener('submit', function(e) {
         e.preventDefault();
         const city = cityInput.value.trim();
@@ -139,8 +124,6 @@ document.addEventListener('DOMContentLoaded', function() {
             fetchWeather(city);
         }
     });
-
-    // Обработчики для кнопок популярных городов
     cityButtons.forEach(button => {
         button.addEventListener('click', function() {
             const city = this.getAttribute('data-city');
