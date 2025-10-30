@@ -1,18 +1,23 @@
-const API_BASE_URL = 'http://37.157.198.11:9000/api/v0';
+const API_BASE_URL = 'https://cors-anywhere.herokuapp.com/http://37.157.198.11:9000/api/v0';
 
 async function getCalendarDataForDate(dateString) {
     const [year, month, day] = dateString.split('-').map(Number);
     const url = `${API_BASE_URL}/en/calendars/default/${year}/${month}/${day}`;
-    const response = await fetch(url);
+    
+    const response = await fetch(url, {
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    });
 
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     const data = await response.json();
-
     return data;
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const dateInput = document.getElementById('date-input');
