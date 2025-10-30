@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",function(){console.log("Главная страница загружена"),document.querySelectorAll(".card").forEach(e=>{e.addEventListener("mouseenter",function(){this.style.transform="translateY(-10px)"}),e.addEventListener("mouseleave",function(){this.style.transform="translateY(0)"})})});
