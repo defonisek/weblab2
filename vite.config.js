@@ -14,4 +14,5 @@ export default {
         weather: resolve(__dirname, 'src/html/weather.html')
       }
     }
+  }
 }
