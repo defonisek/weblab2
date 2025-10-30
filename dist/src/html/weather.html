@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погода</title>
+  <script type="module" crossorigin src="../../assets/weather-CtSfA1B9.js"></script>
+  <link rel="modulepreload" crossorigin href="../../assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="stylesheet" crossorigin href="../../assets/weather-3OkP1Zcs.css">
+  <link rel="stylesheet" crossorigin href="../../assets/main-CZme3Hoj.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🌤️ Прогноз погоды</h1>
+            <p>Узнайте текущую погоду в любом городе мира</p>
+            <a href="../../index.html" class="back-link">← На главную</a>
+        </header>
+        
+        <main class="main-content">
+            <div class="weather-container">
+                <div class="search-section">
+                    <form id="weather-form" class="weather-form">
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                id="city-input" 
+                                placeholder="Введите название города..."
+                                required
+                            >
+                            <button type="submit" id="search-btn">
+                                <span>Поиск</span>
+                                <div class="loading-spinner" id="loading-spinner"></div>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="weather-result" class="weather-result hidden">
+                    <div class="weather-card">
+                        <div class="location">
+                            <h2 id="city-name"></h2>
+                            <p id="location-details"></p>
+                        </div>
+                        <div class="weather-main">
+                            <div class="temperature">
+                                <span id="temperature"></span>
+                                <div class="weather-icon" id="weather-icon"></div>
+                            </div>
+                            <p class="weather-description" id="weather-description"></p>
+                        </div>
+                        <div class="weather-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Ощущается как</span>
+                                <span class="detail-value" id="feels-like"></span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Влажность</span>
+                                <span class="detail-value" id="humidity"></span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Ветер</span>
+                                <span class="detail-value" id="wind-speed"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="error-message" class="error-message hidden">
+                    <p>❌ Не удалось найти город. Проверьте название и попробуйте снова.</p>
+                </div>
+
+                <div class="recent-cities">
+                    <h3>Популярные города:</h3>
+                    <div class="cities-list">
+                        <button class="city-btn" data-city="Москва">Москва</button>
+                        <button class="city-btn" data-city="Санкт-Петербург">Санкт-Петербург</button>
+                        <button class="city-btn" data-city="Новосибирск">Новосибирск</button>
+                        <button class="city-btn" data-city="Екатеринбург">Екатеринбург</button>
+                        <button class="city-btn" data-city="Лондон">Лондон</button>
+                        <button class="city-btn" data-city="Нью-Йорк">Нью-Йорк</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>&copy; 2025 | Данные: Open-Meteo</p>
+        </footer>
+    </div>
+</body>
+</html>
