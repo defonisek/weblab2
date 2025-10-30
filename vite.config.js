@@ -8,7 +8,7 @@ export default {
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        churchCalendar: resolve(__dirname, 'src/html/church-calendar.html'),
+        churchCalendar: resolve(__dirname, 'src/html/holiday.html'),
         europeana: resolve(__dirname, 'src/html/europeana.html'),
         facts: resolve(__dirname, 'src/html/facts.html'),
         weather: resolve(__dirname, 'src/html/weather.html')
