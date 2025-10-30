@@ -44,7 +44,7 @@ function displayPainting(painting) {
     
     // Изображение
     if (painting.edmPreview && painting.edmPreview[0]) {
-        paintingHTML += `<img src="${painting.edmPreview[0]}" alt="${painting.title ? painting.title[0] : 'Картина'}" id="paintingImage">`;
+        paintingHTML += `<img src="${painting.edmPreview[0]}" alt="${painting.title ? painting.title[0] : 'Картина'}" class="painting-image">`;
     } else {
         paintingHTML += '<p>Изображение недоступно</p>';
     }
@@ -94,8 +94,12 @@ function hideError() {
     document.getElementById('errorMessage').style.display = 'none';
 }
 
-// Автоматически загружаем первую картину при загрузке страницы
-window.addEventListener('load', function() {
-    // Небольшая задержка для лучшего UX
+// Инициализация после загрузки DOM
+document.addEventListener('DOMContentLoaded', function() {
+    // Назначаем обработчики событий для кнопок
+    document.getElementById('loadButton').addEventListener('click', loadRandomPainting);
+    document.getElementById('clearButton').addEventListener('click', clearGallery);
+    
+    // Автоматически загружаем первую картину при загрузке страницы
     setTimeout(loadRandomPainting, 500);
 });
