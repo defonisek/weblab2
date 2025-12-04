@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FactsApp from '../ts/FactsApp.tsx';
+import '../styles/pages/facts.css';
 
 const FactsPage: React.FC = () => {
   return (
@@ -11,14 +13,12 @@ const FactsPage: React.FC = () => {
       </header>
       
       <main className="main-content">
-        <div style={{ textAlign: 'center', padding: '50px' }}>
-          <h2>Страница в разработке</h2>
-          <p>Скоро здесь появятся бесполезные факты</p>
-        </div>
+        <FactsApp />
       </main>
       
       <footer className="footer">
-        <p>&copy; 2025</p>
+        <p>&copy; 2025 | Источник: uselessfacts.jsph.pl</p>
+        <p className="secondary-text">ищу переводчика на русский, свободная вакансия</p>
       </footer>
     </>
   );
