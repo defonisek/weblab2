@@ -1,24 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import HolidayChecker from '../ts/HolidayChecker.tsx';
+import '../styles/pages/holiday.css';
 
 const HolidayPage: React.FC = () => {
   return (
     <>
       <header className="header">
-        <h1>📅 Выходной день?</h1>
-        <p>Проверка, выходной ли день в РФ</p>
+        <h1>Проверка выходного дня</h1>
+        <p>Узнайте, является ли день рабочим или выходным</p>
         <Link to="/" className="back-link">← На главную</Link>
       </header>
       
       <main className="main-content">
-        <div style={{ textAlign: 'center', padding: '50px' }}>
-          <h2>Страница в разработке</h2>
-          <p>Скоро здесь появится проверка выходных дней</p>
-        </div>
+        <HolidayChecker />
       </main>
       
       <footer className="footer">
         <p>&copy; 2025</p>
+        <p><a href="https://isdayoff.ru/" target="_blank" rel="noopener noreferrer">Данные предоставлены сервисом isdayoff.ru</a></p>
       </footer>
     </>
   );
