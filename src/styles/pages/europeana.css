@@ -24,23 +24,6 @@
   text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.europeana-gallery .back-link {
-  color: white;
-  text-decoration: none;
-  margin-top: 1rem;
-  display: inline-block;
-  padding: 8px 16px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 20px;
-  transition: all 0.3s ease;
-  font-weight: 500;
-}
-
-.europeana-gallery .back-link:hover {
-  background: rgba(255,255,255,0.3);
-  transform: translateX(-5px);
-}
-
 .europeana-gallery .container {
   background: white;
   padding: 30px;
