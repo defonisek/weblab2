@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import '../styles/pages/europeana.css';
+import { Link } from 'react-router-dom';
 // Типы для ответа Europeana API
 interface EuropeanaPainting {
   id?: string;
@@ -300,7 +301,7 @@ const EuropeanaGallery: React.FC<EuropeanaGalleryProps> = ({
     <div className="europeana-gallery" role="main">
       <header className="header">
         <h1>🎨 Галерея случайных картин из Europeana</h1>
-        <a href="/" className="back-link">← На главную</a>
+        <Link to="/" className="back-link">← На главную</Link>
       </header>
 
       <div className="container">
