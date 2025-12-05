@@ -4,9 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мультистраничное приложение</title>
+    <link rel="stylesheet" href="./src/styles/main.css">
+    <link rel="stylesheet" href="./src/styles/pages/home.css">
+    <script type="module" src="./src/js/main.js"></script>
 </head>
 <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div class="container">
+        <header class="header">
+            <h1>Добро пожаловать</h1>
+            <p>Выберите один из разделов ниже</p>
+        </header>
+        <main class="main-content">
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🌤️</div>
+                    <h2 class="card-title">Погода</h2>
+                    <p class="card-description">Текущая погода в любом городе мира</p>
+                    <a href="src/html/weather.html" class="card-link">Перейти</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎭</div>
+                    <h2 class="card-title">Искусство</h2>
+                    <p class="card-description">Произведения со всех уголков Европы</p>
+                    <a href="src/html/europeana.html" class="card-link">Перейти</a>
+                </div>
+               <div class="card">
+                    <div class="card-icon">📅</div>
+                    <h2 class="card-title">Выходной день?</h2>
+                    <p class="card-description">Проверка, выходной ли день в РФ</p>
+                    <a href="src/html/holiday.html" class="card-link">Перейти</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🧠</div>
+                    <h2 class="card-title">Бесполезные факты</h2>
+                    <p class="card-description">Случайные факты на EN/DE</p>
+                    <a href="src/html/facts.html" class="card-link">Перейти</a>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <p>&copy; 2025</p>
+        </footer>
+    </div>
 </body>
 </html>
